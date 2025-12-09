@@ -3,11 +3,7 @@ import {
   JsonLogicExplainerOptions,
   OperatorHandler,
 } from "./types";
-import {
-  formatValue,
-  capitalizeFirst,
-  capitalizeWords,
-} from "./utils/formatting";
+import { formatValue } from "./utils/formatting";
 import { getArithmeticOperators } from "./operators/arithmetic";
 import { getComparisonOperators } from "./operators/comparison";
 import { getLogicalOperators } from "./operators/logical";
