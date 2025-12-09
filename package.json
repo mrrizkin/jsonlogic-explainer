@@ -1,6 +1,6 @@
 {
   "name": "jsonlogic-explainer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A library to convert JSONLogic expressions into human-readable explanations",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
