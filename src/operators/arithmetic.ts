@@ -3,7 +3,7 @@
  */
 
 import { OperatorHandler } from "../types";
-import { formatValue, capitalizeWords } from "../utils/formatting";
+import { formatValue } from "../utils/formatting";
 
 /**
  * Get all arithmetic operator handlers
@@ -26,31 +26,31 @@ const handleAddition: OperatorHandler = (values, _data, explain) => {
     const formattedValues = values.map((v) => {
       return explain ? explain(v) : formatValue(v);
     });
-    return capitalizeWords(`${formattedValues.join(" plus ")}`);
+    return `${formattedValues.join(" plus ")}`;
   }
   if (Array.isArray(values) && values.length === 1) {
     const value0Val = explain ? explain(values[0]) : formatValue(values[0]);
-    return capitalizeWords(`positive ${value0Val}`);
+    return `positive ${value0Val}`;
   }
   const valuesVal = explain ? explain(values) : formatValue(values);
-  return capitalizeWords(`addition with ${valuesVal}`);
+  return `addition with ${valuesVal}`;
 };
 
 const handleSubtraction: OperatorHandler = (values, _data, explain) => {
   if (Array.isArray(values) && values.length === 1) {
     const value0Val = explain ? explain(values[0]) : formatValue(values[0]);
-    return capitalizeWords(`negative ${value0Val}`);
+    return `negative ${value0Val}`;
   }
   if (Array.isArray(values) && values.length >= 2) {
     const formattedValues = values.map((v) => {
       return explain ? explain(v) : formatValue(v);
     });
-    return capitalizeWords(
-      `${formattedValues[0]} minus ${formattedValues.slice(1).join(" minus ")}`
-    );
+    return `${formattedValues[0]} minus ${formattedValues
+      .slice(1)
+      .join(" minus ")}`;
   }
   const valuesVal = explain ? explain(values) : formatValue(values);
-  return capitalizeWords(`subtraction with ${valuesVal}`);
+  return `subtraction with ${valuesVal}`;
 };
 
 const handleMultiplication: OperatorHandler = (values, _data, explain) => {
@@ -58,10 +58,10 @@ const handleMultiplication: OperatorHandler = (values, _data, explain) => {
     const formattedValues = values.map((v) => {
       return explain ? explain(v) : formatValue(v);
     });
-    return capitalizeWords(`${formattedValues.join(" times ")}`);
+    return `${formattedValues.join(" times ")}`;
   }
   const valuesVal = explain ? explain(values) : formatValue(values);
-  return capitalizeWords(`multiplication with ${valuesVal}`);
+  return `multiplication with ${valuesVal}`;
 };
 
 const handleDivision: OperatorHandler = (values, _data, explain) => {
@@ -69,22 +69,18 @@ const handleDivision: OperatorHandler = (values, _data, explain) => {
     const formattedValues = values.map((v) => {
       return explain ? explain(v) : formatValue(v);
     });
-    return capitalizeWords(
-      `${formattedValues[0]} divided by ${formattedValues[1]}`
-    );
+    return `${formattedValues[0]} divided by ${formattedValues[1]}`;
   }
   if (Array.isArray(values) && values.length > 2) {
     const formattedValues = values.map((v) => {
       return explain ? explain(v) : formatValue(v);
     });
-    return capitalizeWords(
-      `${formattedValues[0]} divided by ${formattedValues
-        .slice(1)
-        .join(" divided by ")}`
-    );
+    return `${formattedValues[0]} divided by ${formattedValues
+      .slice(1)
+      .join(" divided by ")}`;
   }
   const valuesVal = explain ? explain(values) : formatValue(values);
-  return capitalizeWords(`division with ${valuesVal}`);
+  return `division with ${valuesVal}`;
 };
 
 const handleModulo: OperatorHandler = (values, _data, explain) => {
@@ -92,21 +88,19 @@ const handleModulo: OperatorHandler = (values, _data, explain) => {
     const formattedValues = values.map((v) => {
       return explain ? explain(v) : formatValue(v);
     });
-    return capitalizeWords(
-      `${formattedValues[0]} modulo ${formattedValues[1]}`
-    );
+    return `${formattedValues[0]} modulo ${formattedValues[1]}`;
   }
   const valuesVal = explain ? explain(values) : formatValue(values);
-  return capitalizeWords(`modulo with ${valuesVal}`);
+  return `modulo with ${valuesVal}`;
 };
 
 const handleAbs: OperatorHandler = (values, _data, explain) => {
   if (Array.isArray(values) && values.length === 1) {
     const value0Val = explain ? explain(values[0]) : formatValue(values[0]);
-    return capitalizeWords(`absolute value of ${value0Val}`);
+    return `absolute value of ${value0Val}`;
   }
   const valuesVal = explain ? explain(values) : formatValue(values);
-  return capitalizeWords(`absolute value with ${valuesVal}`);
+  return `absolute value with ${valuesVal}`;
 };
 
 const handleMax: OperatorHandler = (values, _data, explain) => {
@@ -116,18 +110,16 @@ const handleMax: OperatorHandler = (values, _data, explain) => {
       const innerValues = values[0].map((v) => {
         return explain ? explain(v) : formatValue(v);
       });
-      return capitalizeWords(
-        `maximum of [${innerValues.join(", ")}]`
-      );
+      return `maximum of [${innerValues.join(", ")}]`;
     }
     // max can take multiple parameters
     const formattedValues = values.map((v) => {
       return explain ? explain(v) : formatValue(v);
     });
-    return capitalizeWords(`maximum of ${formattedValues.join(", ")}`);
+    return `maximum of ${formattedValues.join(", ")}`;
   }
   const valuesVal = explain ? explain(values) : formatValue(values);
-  return capitalizeWords(`maximum with ${valuesVal}`);
+  return `maximum with ${valuesVal}`;
 };
 
 const handleMin: OperatorHandler = (values, _data, explain) => {
@@ -137,16 +129,14 @@ const handleMin: OperatorHandler = (values, _data, explain) => {
       const innerValues = values[0].map((v) => {
         return explain ? explain(v) : formatValue(v);
       });
-      return capitalizeWords(
-        `minimum of [${innerValues.join(", ")}]`
-      );
+      return `minimum of [${innerValues.join(", ")}]`;
     }
     // min can take multiple parameters
     const formattedValues = values.map((v) => {
       return explain ? explain(v) : formatValue(v);
     });
-    return capitalizeWords(`minimum of ${formattedValues.join(", ")}`);
+    return `minimum of ${formattedValues.join(", ")}`;
   }
   const valuesVal = explain ? explain(values) : formatValue(values);
-  return capitalizeWords(`minimum with ${valuesVal}`);
+  return `minimum with ${valuesVal}`;
 };

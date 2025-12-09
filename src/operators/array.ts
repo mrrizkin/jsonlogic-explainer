@@ -3,7 +3,7 @@
  */
 
 import { OperatorHandler } from "../types";
-import { formatValue, capitalizeWords } from "../utils/formatting";
+import { formatValue } from "../utils/formatting";
 
 /**
  * Get all array operator handlers
@@ -27,12 +27,10 @@ const handleMap: OperatorHandler = (values, _data, explain) => {
     const [array, operation] = values;
     const arrayVal = explain ? explain(array) : formatValue(array);
     const operationVal = explain ? explain(operation) : formatValue(operation);
-    return capitalizeWords(
-      `map ${arrayVal} with operation ${operationVal}`
-    );
+    return `map ${arrayVal} with operation ${operationVal}`;
   }
   const valuesVal = explain ? explain(values) : formatValue(values);
-  return capitalizeWords(`map operation with ${valuesVal}`);
+  return `map operation with ${valuesVal}`;
 };
 
 const handleFilter: OperatorHandler = (values, _data, explain) => {
@@ -40,12 +38,10 @@ const handleFilter: OperatorHandler = (values, _data, explain) => {
     const [array, condition] = values;
     const arrayVal = explain ? explain(array) : formatValue(array);
     const conditionVal = explain ? explain(condition) : formatValue(condition);
-    return capitalizeWords(
-      `filter ${arrayVal} where ${conditionVal}`
-    );
+    return `filter ${arrayVal} where ${conditionVal}`;
   }
   const valuesVal = explain ? explain(values) : formatValue(values);
-  return capitalizeWords(`filter operation with ${valuesVal}`);
+  return `filter operation with ${valuesVal}`;
 };
 
 const handleReduce: OperatorHandler = (values, _data, explain) => {
@@ -53,13 +49,13 @@ const handleReduce: OperatorHandler = (values, _data, explain) => {
     const [array, operation, initialValue] = values;
     const arrayVal = explain ? explain(array) : formatValue(array);
     const operationVal = explain ? explain(operation) : formatValue(operation);
-    const initialValueVal = explain ? explain(initialValue) : formatValue(initialValue);
-    return capitalizeWords(
-      `reduce ${arrayVal} with ${operationVal} starting with ${initialValueVal}`
-    );
+    const initialValueVal = explain
+      ? explain(initialValue)
+      : formatValue(initialValue);
+    return `reduce ${arrayVal} with ${operationVal} starting with ${initialValueVal}`;
   }
   const valuesVal = explain ? explain(values) : formatValue(values);
-  return capitalizeWords(`reduce operation with ${valuesVal}`);
+  return `reduce operation with ${valuesVal}`;
 };
 
 const handleAll: OperatorHandler = (values, _data, explain) => {
@@ -67,12 +63,10 @@ const handleAll: OperatorHandler = (values, _data, explain) => {
     const [array, condition] = values;
     const arrayVal = explain ? explain(array) : formatValue(array);
     const conditionVal = explain ? explain(condition) : formatValue(condition);
-    return capitalizeWords(
-      `all items in ${arrayVal} satisfy ${conditionVal}`
-    );
+    return `all items in ${arrayVal} satisfy ${conditionVal}`;
   }
   const valuesVal = explain ? explain(values) : formatValue(values);
-  return capitalizeWords(`all operation with ${valuesVal}`);
+  return `all operation with ${valuesVal}`;
 };
 
 const handleNone: OperatorHandler = (values, _data, explain) => {
@@ -80,12 +74,10 @@ const handleNone: OperatorHandler = (values, _data, explain) => {
     const [array, condition] = values;
     const arrayVal = explain ? explain(array) : formatValue(array);
     const conditionVal = explain ? explain(condition) : formatValue(condition);
-    return capitalizeWords(
-      `no items in ${arrayVal} satisfy ${conditionVal}`
-    );
+    return `no items in ${arrayVal} satisfy ${conditionVal}`;
   }
   const valuesVal = explain ? explain(values) : formatValue(values);
-  return capitalizeWords(`none operation with ${valuesVal}`);
+  return `none operation with ${valuesVal}`;
 };
 
 const handleSome: OperatorHandler = (values, _data, explain) => {
@@ -93,12 +85,10 @@ const handleSome: OperatorHandler = (values, _data, explain) => {
     const [array, condition] = values;
     const arrayVal = explain ? explain(array) : formatValue(array);
     const conditionVal = explain ? explain(condition) : formatValue(condition);
-    return capitalizeWords(
-      `some items in ${arrayVal} satisfy ${conditionVal}`
-    );
+    return `some items in ${arrayVal} satisfy ${conditionVal}`;
   }
   const valuesVal = explain ? explain(values) : formatValue(values);
-  return capitalizeWords(`some operation with ${valuesVal}`);
+  return `some operation with ${valuesVal}`;
 };
 
 const handleMerge: OperatorHandler = (values, _data, explain) => {
@@ -106,10 +96,10 @@ const handleMerge: OperatorHandler = (values, _data, explain) => {
     const formattedValues = values.map((v) => {
       return explain ? explain(v) : formatValue(v);
     });
-    return capitalizeWords(`merge arrays: ${formattedValues.join(", ")}`);
+    return `merge arrays: ${formattedValues.join(", ")}`;
   }
   const valuesVal = explain ? explain(values) : formatValue(values);
-  return capitalizeWords(`merge operation with ${valuesVal}`);
+  return `merge operation with ${valuesVal}`;
 };
 
 const handleMissing: OperatorHandler = (values, _data, explain) => {
@@ -121,7 +111,7 @@ const handleMissing: OperatorHandler = (values, _data, explain) => {
           return explain ? explain(field) : formatValue(field);
         })
         .join(", ");
-      return capitalizeWords(`missing required fields: ${requiredFields}`);
+      return `missing required fields: ${requiredFields}`;
     } else {
       // Handle the case where individual parameters are required
       const requiredFields = values
@@ -129,13 +119,11 @@ const handleMissing: OperatorHandler = (values, _data, explain) => {
           return explain ? explain(field) : formatValue(field);
         })
         .join(", ");
-      return capitalizeWords(`missing required fields: ${requiredFields}`);
+      return `missing required fields: ${requiredFields}`;
     }
   }
   const valuesVal = explain ? explain(values) : formatValue(values);
-  return capitalizeWords(
-    `check for missing values with ${valuesVal}`
-  );
+  return `check for missing values with ${valuesVal}`;
 };
 
 const handleMissingSome: OperatorHandler = (values, _data, explain) => {
@@ -147,20 +135,18 @@ const handleMissingSome: OperatorHandler = (values, _data, explain) => {
           return explain ? explain(field) : formatValue(field);
         })
         .join(", ");
-      const minRequiredVal = explain ? explain(minRequired) : formatValue(minRequired);
-      return capitalizeWords(
-        `missing at least ${minRequiredVal} of these fields: ${fieldsList}`
-      );
+      const minRequiredVal = explain
+        ? explain(minRequired)
+        : formatValue(minRequired);
+      return `missing at least ${minRequiredVal} of these fields: ${fieldsList}`;
     } else {
-      const minRequiredVal = explain ? explain(minRequired) : formatValue(minRequired);
+      const minRequiredVal = explain
+        ? explain(minRequired)
+        : formatValue(minRequired);
       const fieldsVal = explain ? explain(fields) : formatValue(fields);
-      return capitalizeWords(
-        `missing at least ${minRequiredVal} of field ${fieldsVal}`
-      );
+      return `missing at least ${minRequiredVal} of field ${fieldsVal}`;
     }
   }
   const valuesVal = explain ? explain(values) : formatValue(values);
-  return capitalizeWords(
-    `check for missing some values with ${valuesVal}`
-  );
+  return `check for missing some values with ${valuesVal}`;
 };

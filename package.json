@@ -15,7 +15,6 @@
     "lint": "eslint src/**/*.ts",
     "prettier": "prettier --write src/**/*.ts",
     "prettier:check": "prettier --check src/**/*.ts",
-    "playground": "cd playground && npm run dev",
     "prepare": "npm run build"
   },
   "repository": {

@@ -48,5 +48,3 @@ htmlcov/
 .vs/
 .vscode-test/
 .github/
-playground/node_modules/
-playground/dist/
