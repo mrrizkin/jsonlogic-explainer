@@ -1,6 +1,6 @@
 # JSONLogic Explainer
 
-A library to convert JSONLogic expressions into human-readable explanations.
+A library to convert [JSONLogic](https://github.com/jwadhams/json-logic-js) expressions into human-readable explanations.
 
 ## Installation
 
