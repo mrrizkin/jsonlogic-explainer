@@ -104,7 +104,7 @@ export class JsonLogicExplainer {
    */
   private handleVariable(varKey: any): string {
     if (varKey === null || varKey === "") {
-      return "null";
+      return this.getVariableName(varKey as string);
     }
 
     // Handle variable with default value: {"var": ["field", "default"]}
@@ -125,6 +125,10 @@ export class JsonLogicExplainer {
     // Use custom variable name if provided
     if (this.options.variableNames && this.options.variableNames[key]) {
       return this.options.variableNames[key];
+    }
+
+    if (key === null || key === "") {
+      return "null";
     }
 
     // Use lowercase for simple variable names (like age, score, etc.)
