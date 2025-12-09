@@ -1,0 +1,49 @@
+{
+  "name": "jsonlogic-explainer",
+  "version": "1.0.0",
+  "description": "A library to convert JSONLogic expressions into human-readable explanations",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src/**/*.ts",
+    "prettier": "prettier --write src/**/*.ts",
+    "prettier:check": "prettier --check src/**/*.ts",
+    "playground": "cd playground && npm run dev",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrrizkin/jsonlogic-explainer.git"
+  },
+  "keywords": [
+    "jsonlogic",
+    "human-readable",
+    "business-rules",
+    "explainer",
+    "parser"
+  ],
+  "author": "mrrizkin <nugraha07rizki@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.8.0",
+    "jest": "^29.5.0",
+    "prettier": "^2.8.4",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ]
+}
